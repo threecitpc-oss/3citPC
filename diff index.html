@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Sklep PC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #222;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .products, .cart {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .products {
+            flex: 3;
+        }
+
+        .cart {
+            flex: 1;
+        }
+
+        .product {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .product:last-child {
+            border-bottom: none;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .cart-item {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .total {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>THREECITPC</h1>
+    <p>Najlepsze komputery dla graczy i do pracy</p>
+</header>
+
+<div class="container">
+    <div class="products">
+        <h2>Oferta</h2>
+
+        <div class="product">
+            <h3>PC Gaming Ryzen 5</h3>
+            <p>Ryzen 5 5600X, RTX 3060, 16GB RAM ta i kurwa gówno</p>
+            <p><strong>4500 zł</strong></p>
+            <button onclick="addToCart('PC Gaming Ryzen 5', 4500)">Dodaj do koszyka</button>
+        </div>
+
+        <div class="product">
+            <h3>PC Gaming i7</h3>
+            <p>Intel i7 12700K, RTX 4070, 32GB RAM</p>
+            <p><strong>7500 zł</strong></p>
+            <button onclick="addToCart('PC Gaming i7', 7500)">Dodaj do koszyka</button>
+        </div>
+
+        <div class="product">
+            <h3>PC Biurowy</h3>
+            <p>Intel i5, zintegrowana grafika, 16GB RAM</p>
+            <p><strong>2800 zł</strong></p>
+            <button onclick="addToCart('PC Biurowy', 2800)">Dodaj do koszyka</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>Koszyk</h2>
+        <div id="cart-items"></div>
+        <div class="total">Suma: <span id="total">0</span> zł</div>
+    </div>
+</div>
+
+<script>
+    let total = 0;
+    const cartItems = document.getElementById("cart-items");
+    const totalSpan = document.getElementById("total");
+
+    function addToCart(name, price) {
+        const item = document.createElement("div");
+        item.className = "cart-item";
+        item.textContent = name + " - " + price + " zł";
+        cartItems.appendChild(item);
+
+        total += price;
+        totalSpan.textContent = total;
+    }
+</script>
+
+</body>
+</html>
